@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import bookCover from "./assets/book.svg";
+import BookCard from "./components/book";
 
 type Book = {
   id: number;
@@ -27,11 +28,7 @@ function App() {
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {data.map((book) => (
             <li key={book.id} className="text-center">
-              <div className="relative mx-auto w-fit">
-                <img src={bookCover} alt={`${book.title} cover`} width={200} height={300} />
-              </div>
-              <p className="font-semibold">{book.title}</p>
-              <p className="text-sm text-gray-500">{book.author}</p>
+                <BookCard bookData={{ ...book, bookCover }} onToggleRead={() => {}} />
             </li>
           ))}
         </ul>
