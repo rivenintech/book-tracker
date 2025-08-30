@@ -4,7 +4,8 @@
     "start": "tsx src/index.ts",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'tsx' src/index.ts",
     "db:push": "npx drizzle-kit push",
-    "db:seed": "tsx scripts/seed-db.ts"
+    "db:seed": "tsx scripts/seed-db.ts",
+    "db:prepare": "npm run db:push && npm run db:seed"
   },
   "dependencies": {
     "@libsql/client": "^0.15.14",

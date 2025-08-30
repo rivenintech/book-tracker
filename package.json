@@ -1,0 +1,11 @@
+{
+  "name": "book-tracker",
+  "private": true,
+  "scripts": {
+    "prepare:all": "concurrently \"npm install --prefix frontend\" \"npm install --prefix backend && npm run db:prepare --prefix backend\"",
+    "start": "concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
