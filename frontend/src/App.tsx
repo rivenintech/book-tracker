@@ -22,7 +22,7 @@ function App() {
     },
   });
 
-  const mutation = useMutation({
+  const updateReadStatus = useMutation({
     mutationFn: async (updatedBook: { id: number; read: boolean }) => {
       const response = await fetch(`http://localhost:3000/api/books/${updatedBook.id}`, {
         method: "PUT",
@@ -84,7 +84,7 @@ function App() {
               <li key={book.id} className="text-center">
                 <BookCard
                   bookData={{ ...book, bookCover }}
-                  onToggleRead={() => mutation.mutate({ id: book.id, read: !book.read })}
+                  onToggleRead={() => updateReadStatus.mutate({ id: book.id, read: !book.read })}
                 />
               </li>
             ))}
