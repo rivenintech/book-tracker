@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { BookOpen, Loader2 } from "lucide-react";
 import bookCover from "./assets/book.svg";
+import AddBookBtn from "./components/add-book-btn";
 import BookCard from "./components/book";
 
 type Book = {
@@ -43,9 +44,12 @@ function App() {
   return (
     <div className="container mx-auto p-4">
       <header>
-        <div className="items-bottom mb-8 flex gap-2">
+        <div className="items-bottom flex gap-2">
           <BookOpen size={30} className="self-baseline-last" />
           <h1 className="text-2xl font-bold">Book Tracker</h1>
+        </div>
+        <div className="my-6 flex justify-end">
+          <AddBookBtn onSubmit={(values) => console.log(values)} />
         </div>
       </header>
       <main>
