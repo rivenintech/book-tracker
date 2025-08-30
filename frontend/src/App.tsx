@@ -41,6 +41,25 @@ function App() {
     },
   });
 
+  const submitNewBook = useMutation({
+    mutationFn: async (newBook: { title: string; author: string }) => {
+      const response = await fetch(`http://localhost:3000/api/books`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newBook),
+      });
+      if (!response.ok) {
+        throw new Error(`Failed to add book: ${response.statusText}`);
+      }
+    },
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["books"] });
+    },
+  });
+
   return (
     <div className="container mx-auto max-w-7xl p-4">
       <header>
@@ -52,7 +71,7 @@ function App() {
           <p className="text-sm text-gray-500">Keep track of your reading list and manage your books effortlessly.</p>
         </div>
         <div className="my-6 flex justify-end">
-          <AddBookBtn onSubmit={(values) => console.log(values)} />
+          <AddBookBtn onSubmit={(newBook) => submitNewBook.mutate(newBook)} />
         </div>
       </header>
       <main>
