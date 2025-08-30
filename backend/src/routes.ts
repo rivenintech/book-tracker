@@ -10,8 +10,8 @@ const router = Router();
 // Get all books
 router.get("/", async (req, res) => {
   const booksList = await db.query.books.findMany({
-	orderBy: (book, { desc }) => [desc(book.id)],
-});
+    orderBy: (book, { desc }) => [desc(book.id)],
+  });
   res.json(booksList);
 });
 
