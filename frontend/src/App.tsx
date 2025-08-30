@@ -42,11 +42,14 @@ function App() {
   });
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto max-w-7xl p-4">
       <header>
-        <div className="items-bottom flex gap-2">
-          <BookOpen size={30} className="self-baseline-last" />
-          <h1 className="text-2xl font-bold">Book Tracker</h1>
+        <div>
+          <div className="items-bottom flex gap-2">
+            <BookOpen size={30} className="self-baseline-last" />
+            <h1 className="text-2xl font-bold">Book Tracker</h1>
+          </div>
+          <p className="text-sm text-gray-500">Keep track of your reading list and manage your books effortlessly.</p>
         </div>
         <div className="my-6 flex justify-end">
           <AddBookBtn onSubmit={(values) => console.log(values)} />
@@ -57,7 +60,7 @@ function App() {
           <Loader2 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform animate-spin" />
         )}
         {data && (
-          <ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          <ul className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
             {data.map((book) => (
               <li key={book.id} className="text-center">
                 <BookCard

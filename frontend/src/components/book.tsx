@@ -8,8 +8,14 @@ type BookProps = {
 export default function BookCard({ bookData, onToggleRead }: BookProps) {
   return (
     <>
-      <div className="relative mx-auto w-fit">
-        <img src={bookData.bookCover} alt={`${bookData.title} cover`} width={200} height={300} />
+      <div className="relative">
+        <img
+          src={bookData.bookCover}
+          alt={`${bookData.title} cover`}
+          width={200}
+          height={300}
+          className="size-full object-cover"
+        />
         <button
           title={bookData.read ? "Mark as unread" : "Mark as read"}
           type="button"
