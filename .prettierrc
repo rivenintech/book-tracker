@@ -1,4 +1,11 @@
 {
   "printWidth": 120,
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "overrides": [
+    {
+      "files": ["frontend/**/*"],
+      "options": {
+        "plugins": ["prettier-plugin-tailwindcss"]
+      }
+    }
+  ]
 }
