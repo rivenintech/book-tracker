@@ -17,14 +17,14 @@ function App() {
   const { data, isLoading } = useQuery({
     queryKey: ["books"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:3000/api/books");
+      const response = await fetch("/api/books");
       return (await response.json()) as Promise<Book[]>;
     },
   });
 
   const updateReadStatus = useMutation({
     mutationFn: async (updatedBook: { id: number; read: boolean }) => {
-      const response = await fetch(`http://localhost:3000/api/books/${updatedBook.id}`, {
+      const response = await fetch(`/api/books/${updatedBook.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +43,7 @@ function App() {
 
   const submitNewBook = useMutation({
     mutationFn: async (newBook: { title: string; author: string }) => {
-      const response = await fetch(`http://localhost:3000/api/books`, {
+      const response = await fetch(`/api/books`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
